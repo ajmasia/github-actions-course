@@ -1,0 +1,23 @@
+# Workflow name
+name: Hello world workflow
+
+# Event trigger
+on: [push]
+
+# Workflow jobs
+jobs:
+  # Job name
+  build:
+    # Virtual environment
+    runs-on: ubuntu-latest
+    # Workflow steps
+    steps:
+      # Use a public action
+      - name: Project checkout action
+        uses: actions/checkout@v2
+        id: checkout
+      # Use a custom step
+      - name: Hello world step
+        run: |
+          echo "Hello World Github Actions!"
+          echo echo "Action launched from ${{ github.workflow }} triggered by the ${{ github.event_name }} done by ${{ github.actor }}"
