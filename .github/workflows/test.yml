@@ -2,7 +2,7 @@ name: my workflow
 on: push
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@master
@@ -16,5 +16,3 @@ jobs:
         run: echo $TAG
       - name: Test 02
         run: echo $GITHUB_ENV
-      - name: Test 03
-        run: echo ${{ env.TAG }}
