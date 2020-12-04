@@ -1,0 +1,16 @@
+name: my workflow
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@master
+        with:
+          node-version: 12.16.1
+      - name: Hardcoded tag to file
+        run: (node -p "require('./package.json').version") > TAG
+      - name: Set action ENV
+        run: echo "TAG=$(echo cat TAG)" >> $GITHUB_ENV
+      - name: Test
+        run: echo $TAG
