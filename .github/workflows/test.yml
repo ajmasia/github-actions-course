@@ -11,6 +11,6 @@ jobs:
       - name: Hardcoded tag to file
         run: echo "(node -p "require('./package.json').version")"
       - name: Set env
-        run: echo "TAG=${{ cat TAG }}" >> $GITHUB_ENV
+        run: echo "TAG=1234" >> $GITHUB_ENV
       - name: Test 02
         run: echo $GITHUB_ENV
