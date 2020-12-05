@@ -32,4 +32,4 @@ jobs:
       - name: Test Windows
         if: startsWith(matrix.os, 'windows')
         run: |
-          echo $env.DATA_NAME
+          echo ${{ env.TAG }}
