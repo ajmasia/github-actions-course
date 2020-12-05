@@ -19,10 +19,14 @@ jobs:
         run: |
           chcp 65001 #set code page to utf-8
           echo ("BRANCH_NAME=" + (cat TAG)) >> $env:GITHUB_ENV
-          echo "${{ env.BRANCH_NAME }}"
-          echo $env:BRANCH_NAME
       - name: Set env vars on Ubuntu
         if: startsWith(matrix.os, 'ubuntu')
+        run: echo "TAG=$( cat TAG )" >> $GITHUB_ENV
+      - name: Test Ubuntu
+        if: startsWith(matrix.os, 'ubuntu')
+        run: run echo $GITHUB_ENV
+      - name: Test Windows
+        if: startsWith(matrix.os, 'windows')
         run: |
-          echo "TAG=$( cat TAG )" >> $GITHUB_ENV
-          echo $GITHUB_ENV
+          echo "${{ env.BRANCH_NAME }}"
+          echo $env:BRANCH_NAME
