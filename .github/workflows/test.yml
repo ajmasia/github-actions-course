@@ -13,6 +13,6 @@ jobs:
       - name: set environment variables
         uses: allenevans/set-env@v2.0.0
         with:
-          TAG: echo "$( cat TAG )"
+          TAG: '$( cat TAG )'
       - name: Test 02
         run: echo $GITHUB_ENV
