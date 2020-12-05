@@ -11,8 +11,6 @@ jobs:
       - name: Hardcoded tag to file
         run: (node -p "require('./package.json').version") > TAG
       - name: set environment variables
-        uses: allenevans/set-env@v2.0.0
-        with:
-          TAG: '1234'
+        run: echo TAG=$( cat TAG) >> $GITHUB_ENV
       - name: Test 02
         run: echo $GITHUB_ENV
