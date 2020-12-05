@@ -10,7 +10,10 @@ jobs:
           node-version: 12.16.1
       - name: Hardcoded tag to file
         run: (node -p "require('./package.json').version") > TAG
+        shell: bash
       - name: Set env
         run: cat TAG >> $GITHUB_ENV
+        shell: bash
       - name: Test 02
         run: echo $GITHUB_ENV
+        shell: bash
