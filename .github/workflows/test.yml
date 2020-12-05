@@ -13,6 +13,6 @@ jobs:
       - name: set environment variables
         uses: allenevans/set-env@v2.0.0
         with:
-          TAG: cat TAG
+          TAG: echo "$(node -p "require('./package.json').version")"
       - name: Test 02
         run: echo $GITHUB_ENV
