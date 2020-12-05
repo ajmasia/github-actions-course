@@ -11,12 +11,6 @@ jobs:
       - name: Hardcoded tag to file
         run: (node -p "require('./package.json').version") > TAG
       - name: Set env
-        run: cat TAG
-      - name: Set output
-        id: vars
-        run: echo "::set-output name=TAG::${GITHUB_REF#refs/*/}"
-      - name: Check output
-        env:
-          RELEASE_VERSION: ${{ steps.vars.outputs.TAG }}
-        run: |
-          echo ${{ steps.vars.outputs.TAG }}
+        run: echo ("TAG=" + ( cat TAG )) >> $env.GITHUB_ENV
+      - name: Test
+        run: echo $env.GITHUB_ENV
