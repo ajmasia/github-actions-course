@@ -32,5 +32,4 @@ jobs:
       - name: Test Windows
         if: startsWith(matrix.os, 'windows')
         run: |
-          echo $env:GITHUB_ENV
           echo $env.DATA_NAME
