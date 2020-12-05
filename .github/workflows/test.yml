@@ -6,7 +6,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-18.04, windows-latest]
+        os: [macOS-latest,ubuntu-18.04, windows-latest]
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@master
@@ -19,7 +19,7 @@ jobs:
           echo ("TAG01=" + (node -p "require('./package.json').version")) >> $env:GITHUB_ENV
           echo ("TAG02=" + (node -p "require('./package.json').version")) >> $env:GITHUB_ENV
       - name: Set env vars on Ubuntu
-        if: startsWith(matrix.os, 'ubuntu')
+        if: startsWith(matrix.os, 'ubuntu' || matrix.os, 'macOS')
         run: |
           echo "TAG01=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
           echo "TAG02=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
