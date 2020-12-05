@@ -26,6 +26,9 @@ jobs:
       - name: Test Ubuntu
         if: startsWith(matrix.os, 'ubuntu')
         run: echo $GITHUB_ENV
+      - name: Test macOS
+        if: startsWith(matrix.os, 'macOS')
+        run: echo $GITHUB_ENV
       - name: Test Windows
         if: startsWith(matrix.os, 'windows')
         run: |
