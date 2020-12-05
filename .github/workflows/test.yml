@@ -2,8 +2,9 @@ name: my workflow
 on: push
 jobs:
   build:
-    runs-on: windows-latest
-     strategy:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
       matrix:
         os: [macOS-latest, ubuntu-18.04, windows-latest]
     steps:
