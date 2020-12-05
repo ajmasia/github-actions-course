@@ -6,7 +6,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [windows-latest]
+        os: [ubuntu-18.04, windows-latest]
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@master
@@ -14,8 +14,15 @@ jobs:
           node-version: 12.16.1
       - name: Hardcoded tag to file
         run: (node -p "require('./package.json').version") > TAG
-      - run: |
+      - name: Set env vars on Windows
+        if: startsWith(matrix.os, 'windows')
+        run: |
           chcp 65001 #set code page to utf-8
           echo ("BRANCH_NAME=" + (cat TAG)) >> $env:GITHUB_ENV
-      - run: echo "${{ env.BRANCH_NAME }}"
-      - run: echo $env:BRANCH_NAME
+          echo "${{ env.BRANCH_NAME }}"
+          echo $env:BRANCH_NAME
+      - name: Set env vars on Ubuntu
+        if: startsWith(matrix.os, 'ubuntu')
+        run: |
+          echo "TAG=$( cat TAG )" >> $GITHUB_ENV
+          echo $GITHUB_ENV
