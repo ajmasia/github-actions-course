@@ -24,7 +24,7 @@ jobs:
         run: echo "TAG=$( cat TAG )" >> $GITHUB_ENV
       - name: Test Ubuntu
         if: startsWith(matrix.os, 'ubuntu')
-        run: run echo $GITHUB_ENV
+        run: echo $GITHUB_ENV
       - name: Test Windows
         if: startsWith(matrix.os, 'windows')
         run: |
