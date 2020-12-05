@@ -9,7 +9,7 @@ jobs:
         with:
           node-version: 12.16.1
       - name: Hardcoded tag to file
-        run: echo "${{ node -p "require('./package.json').version" }}"
+        run: echo "${{ (node -p "require('./package.json').version") }}"
       - name: Set env
         run: echo "TAG=1234" >> $GITHUB_ENV
       - name: Test 02
