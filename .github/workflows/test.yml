@@ -14,10 +14,9 @@ jobs:
         run: cat TAG
       - name: Set output
         id: vars
-        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+        run: echo "::set-output name=TAG::${GITHUB_REF#refs/*/}"
       - name: Check output
         env:
-          RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
+          RELEASE_VERSION: ${{ steps.vars.outputs.TAG }}
         run: |
-          echo $RELEASE_VERSION
-          echo ${{ steps.vars.outputs.tag }}
+          echo ${{ steps.vars.outputs.TAG }}
