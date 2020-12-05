@@ -22,7 +22,7 @@ jobs:
         if: startsWith(matrix.os, 'ubuntu') || startsWith(matrix.os, 'macOS')
         run: |
           echo "TAG01=$(node -p "require('./package.json').version")" >> $GITHUB_ENV
-          echo "DATA_NAME=${{ secret.DATA_NAME }}" >> $GITHUB_ENV
+          echo "DATA_NAME=${{ secrets.DATA_NAME }}" >> $GITHUB_ENV
       - name: Test Ubuntu
         if: startsWith(matrix.os, 'ubuntu')
         run: echo $GITHUB_ENV
